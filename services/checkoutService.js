@@ -1,5 +1,5 @@
-const products = require('../models/product');
-const users = require('../models/user');
+const products = require('../../models/product');
+const users = require('../../models/user');
 
 function calculateTotal(items, freight, paymentMethod) {
   let total = 0;

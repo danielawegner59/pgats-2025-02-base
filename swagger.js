@@ -55,6 +55,33 @@ module.exports = {
         }
       }
     },
+    '/api/users/users': {
+      get: {
+        summary: 'Consultar usuários (protegido)',
+        security: [{ bearerAuth: [] }],
+        responses: {
+          200: {
+            description: 'Lista de usuários',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: {
+                    type: 'object',
+                    properties: {
+                      id: { type: 'integer' },
+                      name: { type: 'string' },
+                      email: { type: 'string' }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          401: { description: 'Token inválido ou expirado' }
+        }
+      }
+    },
     '/api/checkout': {
       post: {
         summary: 'Realizar checkout',

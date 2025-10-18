@@ -22,6 +22,11 @@ function authenticate(email, password) {
   return null;
 }
 
+
+function getAllUsers() {
+  return users;
+}
+
 function verifyToken(token) {
   try {
     return jwt.verify(token, SECRET);
@@ -30,4 +35,4 @@ function verifyToken(token) {
   }
 }
 
-module.exports = { findUserByEmail, registerUser, authenticate, verifyToken };
+module.exports = { findUserByEmail, registerUser, authenticate, verifyToken, getAllUsers };

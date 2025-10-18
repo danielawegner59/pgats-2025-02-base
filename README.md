@@ -196,23 +196,29 @@ node graphql/app.js
 ```
 Acesse o playground GraphQL em [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
+
 ## Endpoints REST
 - POST `/api/users/register` — Registro de usuário
 - POST `/api/users/login` — Login (retorna token JWT)
+- GET `/api/users/users` — Consulta de usuários (requer token JWT)
 - POST `/api/checkout` — Checkout (requer token JWT)
 
-## Regras de Checkout
-- Só pode fazer checkout com token JWT válido
-- Informe lista de produtos, quantidades, valor do frete, método de pagamento e dados do cartão se necessário
-- 5% de desconto no valor total se pagar com cartão
-- Resposta do checkout contém valor final
+## Regras de Usuário
+- Login e senha obrigatórios para logar
+- Não é possível registrar usuários duplicados
+- Consulta de usuários apenas com token JWT válido
+- Banco de dados em memória (variáveis)
 
-## Banco de dados
-- Usuários e produtos em memória (veja arquivos em `src/models`)
+## Estrutura de Diretórios
+- `src/models` — Modelos em memória
+- `src/services` — Lógica de negócio
+- `rest/controllers` — Controllers das rotas
+- `rest/routes` — Rotas da API
+- `rest/app.js` — Instância do Express (importável para testes)
+- `rest/server.js` — Inicialização do servidor
 
 ## Testes
-- Para testes automatizados, importe o `app` de `rest/app.js` ou `graphql/app.js` sem o método `listen()`
+Para testes automatizados, importe o `app` de `rest/app.js` sem o método `listen()`.
 
-## Documentação
-- Swagger disponível em `/api-docs`
-- Playground GraphQL disponível em `/graphql`
+## Documentação Swagger
+Acesse `/api-docs` para visualizar e testar os endpoints REST.
