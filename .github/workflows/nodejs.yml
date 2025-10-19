@@ -20,7 +20,3 @@ jobs:
         run: npm install
       - name: Executar testes
         run: npm test
-
-scripts:
-  test: "mocha \"test/rest/**/*.test.js\""
-  test-rest-external: "mocha \"test/rest/**/*.test.js\""
